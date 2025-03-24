@@ -10,27 +10,14 @@ import com.first.springbootproject.model.Employee;
 import com.first.springbootproject.repository.EmployeeRepository;
 
 @Service
-public class EmployeeService {
+public interface EmployeeService {
 
-	@Autowired
-	private EmployeeRepository employeeRepository;
+	List<Employee> getAllEmloyee();
 
-	public List<Employee> getAllEmloyee() {
-		return employeeRepository.findAll();
-	}
+	Employee saveUser(Employee employee);
 
-	public Employee saveUser(Employee employee) {
-		return employeeRepository.save(employee);
-	}
+	String getEmail(String name);
 
-	public String getEmail(String name) {
-		System.out.println("name is " + name);
-		String response = employeeRepository.findByName(name);
-		if (response != null) {
-			return response;
-		}else {
-			return "employee is not present";
-		}
-	}
+	public Employee updateEmployee(Employee employee);
 
 }

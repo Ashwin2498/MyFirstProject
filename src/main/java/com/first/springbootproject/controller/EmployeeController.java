@@ -1,6 +1,5 @@
 package com.first.springbootproject.controller;
 
-
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -18,34 +17,29 @@ import com.first.springbootproject.model.Employee;
 
 import com.first.springbootproject.service.EmployeeService;
 
-
 @RestController
 @RequestMapping("/employees")
 
 public class EmployeeController {
-	
+
 	@Autowired
 	private EmployeeService employeeservice;
 
-	
-	
 	@PostMapping("/Employee")
-	public Employee saveEmployee(@RequestBody Employee employee){
+	public Employee saveEmployee(@RequestBody Employee employee) {
 		System.out.println("request body  : " + employee.getName());
 		System.out.println("request body  : " + employee.getEmail());
-	    return employeeservice.saveUser(employee);
+		return employeeservice.saveUser(employee);
 	}
-	
+
 	@GetMapping()
-	public List<Employee> getAll(){
-	    return employeeservice.getAllEmloyee();
+	public List<Employee> getAll() {
+		return employeeservice.getAllEmloyee();
 	}
-	
+
 	@GetMapping("/name")
-	public String getMailId(@RequestParam String name){
+	public String getMailId(@RequestParam String name) {
 		return employeeservice.getEmail(name);
 	}
-	
-	
 
 }

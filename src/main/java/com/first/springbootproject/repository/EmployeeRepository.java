@@ -7,7 +7,7 @@ import com.first.springbootproject.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	
-	@Query(value="select email from employee where name=?1",nativeQuery = true)
+	@Query(value="select email from employee where name like %?1%",nativeQuery = true)
 	public String findByName(String name);
 
 }
